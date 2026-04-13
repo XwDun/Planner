@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+uv.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# MadGraph/MadAnalysis outputs
+#*.lhe
+#*.lhe.gz
+#*.hepmc
+#*.hepmc.gz
+#*.root
+#*.lhco
+#Events/
+#SubProcesses/
+#run_*/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Claude Code
+*.claude
+.claude/
+skills-lock.json
+.agents/
+
+# Data
+*.csv
+*.json
+*.h5
+*.hdf5

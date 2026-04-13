@@ -1,0 +1,13 @@
+numpy
+pandas
+matplotlib
+scipy
+sympy
+networkx
+
+numexpr
+pyarrow
+h5py
+
+torch
+jax
