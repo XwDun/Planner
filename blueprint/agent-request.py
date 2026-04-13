@@ -10,7 +10,7 @@ UserName = Annotated[str, {
     "allow_empty": False,
 }]
 
-InputData = Annotated[Optional[FileSecret], {
+InputData = Annotated[FileSecret, {
     "label": "Analyzed Data",
     "description": "Upload via: magnus send data.tar.gz",
     "placeholder": "file secret code",
@@ -39,6 +39,11 @@ Runner = Annotated[Optional[str], {
     "placeholder": "leave empty for default",
 }]
 
+TargetPath = Annotated[str, {
+    "placeholder": "path/to/output",
+    "description": "output path",
+}]
+
 EntryCommand = Annotated[str, {
     "label": "Entry Command",
     "description": "Command to be executed.",
@@ -48,16 +53,20 @@ EntryCommand = Annotated[str, {
 
 def blueprint(
     user_name: UserName,
-    input_data: InputData,
+    output: TargetPath,
+    input_data: InputData = None,
     memory: Memory = "16G",
     priority: Priority = "B2",
     runner: Runner = None,
-    entry_command: EntryCommand = f"echo No command provided",
+    entry_command: EntryCommand = "echo No command provided\nexit 0",
 ):
+    extra_entry_command = "uv pip install --python /usr/local/bin/python3 --break-system-packages --quiet 'magnus-sdk>=0.6'"
+    final_entry_command = f"{extra_entry_command} && {entry_command}"
+
     submit_job(
         task_name=f"Agent-Test",
-        entry_command= entry_command,
-        repo_name="your-repo",
+        entry_command=final_entry_command,
+        repo_name="",
         memory=memory,
         job_type=getattr(JobType, priority),
         runner=runner,
